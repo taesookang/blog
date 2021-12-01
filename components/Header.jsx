@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
-const categories = [
-  { name: "React", slug: "react" },
-  { name: "Web Development", slug: "webdev" },
-];
+import Image from "next/image";
+import { getCategories } from "../services";
 
 const Header = () => {
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    getCategories().then((result) => setCategories(result))
+  }, [])
+
   return (
     <div className="container mx-auto px-8 mb-8">
-      <div className=" border-b-4 w-full inline-block border-white py-8">
+      <div className=" border-b w-full inline-block border-white py-8">
         <div className="md:float-left block">
           <Link href="/">
-            <span className="cursor-pointer font-bold text-4xl">GraphCMS</span>
+            <a>
+              <Image src="/logo.svg" width={160} height={60} alt="logo" />
+            </a>
           </Link>
         </div>
         <div className="hidden md:float-left md:contents">
