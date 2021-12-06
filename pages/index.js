@@ -3,6 +3,8 @@ import { PostCard, Categories, PostWidget } from '../components'
 import { getPosts } from '../services'
 import { FeaturedPosts } from '../sections'
 
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 
 export default function Home({ posts }) {
   return (
