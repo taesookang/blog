@@ -55,13 +55,21 @@ const PostDetail = ({ post }) => {
             src={obj.src}
           />
         );
+
+      case "href":
+        return (
+          <a href={obj.href} target="_blank" rel="noreferrer">
+            {obj.children[0].text}
+          </a>
+        );
+
       default:
         return modifiedText;
     }
   };
   return (
     <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
-      <div className="block">
+      <div className="block mb-6">
         <Image
           src={post.featuredImage.url}
           alt={post.title}
@@ -69,7 +77,7 @@ const PostDetail = ({ post }) => {
           height={120}
           layout="responsive"
           objectPosition="top"
-          className="rounded-t-lg lg:rounded-lg shadow-md mb-6"
+          className="rounded-t-lg lg:rounded-lg shadow-md"
           priority={true}
         />
       </div>
@@ -106,12 +114,11 @@ const PostDetail = ({ post }) => {
           </div>
         </div>
         <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
-        {console.log(post.content.raw)}
+        {/* {console.log(post.content.raw)} */}
         {post.content.raw.children.map((typeObj, index) => {
           const children = typeObj.children.map((item, itemIndex) =>
             getContentFragment(itemIndex, item.text, item)
           );
-
           return getContentFragment(index, children, typeObj, typeObj.type);
         })}
       </div>

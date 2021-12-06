@@ -11,8 +11,6 @@ const Comments = ({ slug }) => {
         getComments(slug).then((result) => setComments(result))
     }, [])
 
-    console.log(comments);
-
     return (
         <>
             {comments.length > 0 && (

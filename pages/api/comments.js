@@ -5,7 +5,6 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 const graphcmsToken = process.env.GRAPHCMS_TOKEN;
 
 export default async function comments(req, res) {
-  console.log(graphcmsToken);
   const client = new GraphQLClient(graphqlAPI, {
     headers: {
       authorization: `Bearer ${graphcmsToken}`,
